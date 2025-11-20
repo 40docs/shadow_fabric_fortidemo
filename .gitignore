@@ -25,3 +25,6 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# Claude Code configuration (personal, not project-specific)
+.claude/

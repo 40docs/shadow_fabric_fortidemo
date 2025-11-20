@@ -23,10 +23,10 @@ Each integration is built as an **independent MCP server** that:
 ```
 fortidemo/
 ├── mcp-servers/           # Each subdirectory is an independent MCP server
-│   ├── forticnapp/        # Lacework CLI wrapper for CVE queries
-│   ├── aws/               # AWS CLI wrapper for instance metadata
-│   ├── fortiappsec/       # FortiAppSec API integration
-│   └── dns/               # DNS registrar integration
+│   ├── forticnapp/        # ✅ Lacework CLI wrapper for CVE queries
+│   ├── aws/               # ✅ AWS CLI wrapper for instance metadata
+│   ├── fortiappsec/       # 🚧 FortiAppSec API integration
+│   └── dns/               # 📋 DNS registrar integration
 ├── venv/                  # Python virtual environment (gitignored)
 └── CLAUDE.md              # This file
 ```
@@ -255,8 +255,8 @@ lacework vulnerability host list-cves --start -5m --json
 ## Project Status
 
 - ✅ **FortiCNAPP MCP Server**: Complete and tested
-- 🚧 **AWS MCP Server**: Next to build
-- 📋 **FortiAppSec MCP Server**: Planned
+- ✅ **AWS MCP Server**: Complete and tested
+- 🚧 **FortiAppSec MCP Server**: Next to build
 - 📋 **DNS MCP Server**: Planned
 
 ## Additional Notes

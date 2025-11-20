@@ -32,10 +32,17 @@ fortidemo/
 │   │   ├── server.py
 │   │   ├── requirements.txt
 │   │   ├── test_cli.py
+│   │   ├── test_mcp_server.py
 │   │   └── README.md
 │   │
-│   ├── aws/               🚧 Next
-│   ├── fortiappsec/       📋 Planned
+│   ├── aws/               ✅ Complete
+│   │   ├── server.py
+│   │   ├── requirements.txt
+│   │   ├── test_cli.py
+│   │   ├── test_mcp_server.py
+│   │   └── README.md
+│   │
+│   ├── fortiappsec/       🚧 Next
 │   └── dns/               📋 Planned
 │
 └── README.md
@@ -48,13 +55,18 @@ fortidemo/
 - [x] List hosts affected by specific CVE
 - [x] Filter by severity/CVSS score
 - [x] Time range support
-- [ ] **Testing needed**
+- [x] Tested
+
+### ✅ AWS MCP Server (Complete)
+- [x] Describe EC2 instance metadata
+- [x] Get security group rules
+- [x] Region support
+- [x] Simplified and raw output modes
 
 ### 🚧 Next Steps
-1. Test FortiCNAPP MCP server
-2. Build AWS MCP server
-3. Build FortiAppSec MCP server
-4. Build DNS MCP server
+1. Build FortiAppSec MCP server
+2. Build DNS MCP server
+3. Test full workflow end-to-end
 
 ## Quick Start
 
@@ -69,19 +81,22 @@ source venv/bin/activate  # On Linux/macOS
 # OR
 venv\Scripts\activate     # On Windows
 
-# Install dependencies
+# Install dependencies for all servers
 pip install -r mcp-servers/forticnapp/requirements.txt
+pip install -r mcp-servers/aws/requirements.txt
 ```
 
-### 2. Test FortiCNAPP Server
+### 2. Test MCP Servers
 
 ```bash
+# Test FortiCNAPP
 cd mcp-servers/forticnapp
-
-# Test CLI integration (fast)
 python test_cli.py
+python test_mcp_server.py
 
-# Test the MCP server
+# Test AWS
+cd ../aws
+python test_cli.py
 python test_mcp_server.py
 ```
 
@@ -97,6 +112,10 @@ Add to your Claude Desktop config file:
     "forticnapp": {
       "command": "python",
       "args": ["/absolute/path/to/fortidemo/mcp-servers/forticnapp/server.py"]
+    },
+    "aws": {
+      "command": "python",
+      "args": ["/absolute/path/to/fortidemo/mcp-servers/aws/server.py"]
     }
   }
 }
@@ -111,7 +130,9 @@ Restart Claude Desktop and try:
 
 "Which AWS hosts are affected by CVE-2024-1234?"
 
-"Get the instance IDs for all hosts with critical vulnerabilities"
+"For instance i-1234567890abcdef0, get me its metadata and what ports are exposed"
+
+"Find all instances with critical CVEs, then get their AWS details including security groups"
 ```
 
 ## Prerequisites
