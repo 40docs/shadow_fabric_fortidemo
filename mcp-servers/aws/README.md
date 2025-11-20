@@ -185,9 +185,23 @@ Test the actual MCP server and its tools:
 # Install dependencies (if not already installed)
 pip install -r requirements.txt
 
-# Test the MCP server
+# Test the MCP server (generic test)
 python test_mcp_server.py
 ```
+
+### Step 3: Query Real Instance (Optional)
+Quick utility to query a specific instance via the MCP server:
+
+```bash
+# Query a real instance by ID
+python query_instance.py i-1234567890abcdef0
+```
+
+This script:
+- Calls the MCP server's `describe_instance` tool
+- Automatically fetches security groups
+- Shows exactly what Claude Desktop would see
+- Useful for quick testing and debugging
 
 ### Manual CLI Testing
 
